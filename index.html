@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Quincy Dahal - BOOSE DOCUMENTATION</title>
+    <title>Quincy Dahal - BOOSE INTERPRETER DOCUMENTATION</title>
     <style>
         /* ---- Base layout ---- */
         * {
@@ -99,7 +99,7 @@
 </head>
 <body>
     <div class="page">
-        <h1>Quincy Dahal - BOOSE DOCUMENTATION</h1>
+        <h1>Quincy Dahal - BOOSE INTERPRETER DOCUMENTATION</h1>
         <div class="subtitle-main">
             ID: 77466805 - L6 ASE ASSIGNMENT
         </div>
@@ -108,44 +108,56 @@
             This page links to the auto-generated documentation for the commands
             and unit tests of the BOOSE Canvas App project.
         </p>
+        <!-- New section: core application classes -->
+        <h2>Core Application Classes</h2>
+        <ul class="card-grid">
+            <li class="card">
+                <a href="AppCanvas.html">AppCanvas</a>
+                <span class="subtitle">Handles drawing operations, canvas bitmap, shapes, and pen movement.</span>
+            </li>
+            <li class="card">
+                <a href="Form1.html">Form1</a>
+                <span class="subtitle">Main Windows Form containing UI controls and output panel.</span>
+            </li>
+        </ul>
 
         <h2>Command Classes</h2>
         <ul class="card-grid">
             <li class="card">
                 <a href="CircleCommand.html">CircleCommand</a>
-                <span class="subtitle">Draws circles with optional fill.</span>
+                <span class="subtitle">Implements drawing of circles with optional fill behavior.</span>
             </li>
             <li class="card">
                 <a href="ClearCommand.html">ClearCommand</a>
-                <span class="subtitle">Clears the canvas without moving the pen.</span>
+                <span class="subtitle">Clears Canvas.</span>
             </li>
             <li class="card">
                 <a href="CommandFactory.html">CommandFactory</a>
-                <span class="subtitle">Creates command instances for the app.</span>
+                <span class="subtitle">Factory responsible for creating command objects.</span>
             </li>
             <li class="card">
                 <a href="DrawToCommand.html">DrawToCommand</a>
-                <span class="subtitle">Draws a line from the current position.</span>
+                <span class="subtitle">Moves the pen to new coordinates while drawing a line.</span>
             </li>
             <li class="card">
                 <a href="MoveToCommand.html">MoveToCommand</a>
-                <span class="subtitle">Moves the pen without drawing.</span>
+                <span class="subtitle">Moves the pen to a specified position without drawing.</span>
             </li>
             <li class="card">
                 <a href="PenCommand.html">PenCommand</a>
-                <span class="subtitle">Changes the drawing colour.</span>
+                <span class="subtitle">Changes pen color.</span>
             </li>
             <li class="card">
                 <a href="RectCommand.html">RectCommand</a>
-                <span class="subtitle">Draws rectangles, filled or outline.</span>
+                <span class="subtitle">Draws rectangles at the current pen location with width and height.</span>
             </li>
             <li class="card">
                 <a href="ResetCommand.html">ResetCommand</a>
-                <span class="subtitle">Resets canvas, pen and position.</span>
+                <span class="subtitle">Resets the pen and its position to 0,0.</span>
             </li>
             <li class="card">
                 <a href="TriCommand.html">TriCommand</a>
-                <span class="subtitle">Draws outline triangles.</span>
+                <span class="subtitle">Draws Triangle at the current pen location with width and height.</span>
             </li>
             <li class="card">
                 <a href="WriteTextCommand.html">WriteTextCommand</a>
@@ -157,27 +169,27 @@
         <ul class="card-grid">
             <li class="card">
                 <a href="CircleUnitTest.html">CircleUnitTest</a>
-                <span class="subtitle">Tests for the circle command.</span>
+                <span class="subtitle">Tests radius validation and circle creation accuracy.</span>
             </li>
             <li class="card">
                 <a href="DrawToUnitTest.html">DrawToUnitTest</a>
-                <span class="subtitle">Tests for line drawing behaviour.</span>
+                <span class="subtitle">Ensures correct pen position updates and line rendering.</span>
             </li>
             <li class="card">
                 <a href="MoveToUnitTest.html">MoveToUnitTest</a>
-                <span class="subtitle">Tests for pen movement without drawing.</span>
+                <span class="subtitle">Verifies pen relocation without drawing artefacts.</span>
             </li>
             <li class="card">
                 <a href="PenUnitTest.html">PenUnitTest</a>
-                <span class="subtitle">Tests for pen colour changes.</span>
+                <span class="subtitle">Checks pen color mode changes for correctness.</span>
             </li>
             <li class="card">
                 <a href="RectUnitTest.html">RectUnitTest</a>
-                <span class="subtitle">Tests for rectangle drawing.</span>
+                <span class="subtitle">Confirms correct height/width handling and rectangle drawing.</span>
             </li>
             <li class="card">
                 <a href="TriUnitTest.html">TriUnitTest</a>
-                <span class="subtitle">Tests for triangle drawing.</span>
+                <span class="subtitle">Confirms correct height/width handling and triangle drawing.</span>
             </li>
             <li class="card">
                 <a href="WriteTextUnitTest.html">WriteTextUnitTest</a>
