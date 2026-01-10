@@ -12,9 +12,10 @@
 
     
  WinForms implementation of the BOOSE <a href="" >ICanvas</a> interface.
- Wraps a <a href="" >Bitmap</a> and <a href="" >Graphics</a> object and
- provides drawing operations used by BOOSE commands such as
- moveto, drawto, circle, rect, tri, write, etc.
+
+ This class provides a drawable surface backed by a <a href="" >Bitmap</a> and
+ a <a href="" >Graphics</a> object. It is used by BOOSE drawing commands such as
+ <span class="Code">moveto</span>, <span class="Code">drawto</span>, <span class="Code">circle</span>, <span class="Code">rect</span>, <span class="Code">tri</span>, and <span class="Code">write</span>.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -43,11 +44,155 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field instance</div>
+    <div id="Contents" />
+
+    
+ Singleton instance of the canvas.
+ Ensures only one canvas is used throughout the application.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private static AppCanvas? instance = null</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method Instance</div>
+    <div id="Contents" />
+
+    
+ Returns the singleton instance of the canvas, creating it if necessary.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public static AppCanvas Instance(int width, int height)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>width</div><div class='ParameterCommentContainer'>
+Width of the canvas in pixels.
+</div>
+<div class='CommentParameterName'>height</div><div class='ParameterCommentContainer'>
+Height of the canvas in pixels.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+The shared <a href="" >AppCanvas</a> instance.
+</div>
+
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field xpos</div>
+    <div id="Contents" />
+
+    
+ Current X position of the drawing cursor.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private int xpos</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field ypos</div>
+    <div id="Contents" />
+
+    
+ Current Y position of the drawing cursor.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private int ypos</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Property Xpos</div>
     <div id="Contents" />
 
     
- Current X position of the drawing cursor in pixels.
+ Gets or sets the current X coordinate of the drawing cursor.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -80,7 +225,7 @@
     <div id="Contents" />
 
     
- Current Y position of the drawing cursor in pixels.
+ Gets or sets the current Y coordinate of the drawing cursor.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -109,13 +254,47 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field penColour</div>
+    <div id="Contents" />
+
+    
+ Internal storage of the pen colour.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private Color penColour = Color.Black</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Property PenColour</div>
     <div id="Contents" />
 
     
- Current drawing color of the pen.
- Exposed as <a href="" >object</a> to match the BOOSE <a href="" >ICanvas</a> interface,
- but internally stored as a <a href="" >Color</a>.
+ Gets or sets the current pen colour.
+
+ The BOOSE <a href="" >ICanvas</a> interface exposes this property as
+ <a href="" >object</a>, but internally it is stored as a <a href="" >Color</a>.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -144,12 +323,45 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field penSize</div>
+    <div id="Contents" />
+
+    
+ Internal storage of the pen thickness in pixels.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private int penSize = 1</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Property PenSize</div>
     <div id="Contents" />
 
     
- Current width of the drawing pen in pixels.
- Values less than 1 are clamped to 1.
+ Gets or sets the thickness of the drawing pen in pixels.
+ Values are clamped between 1 and 50.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -178,11 +390,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor AppCanvas</div>
+    <div id="PageTitle">Field g</div>
     <div id="Contents" />
 
     
- Creates a new canvas with the specified size.
+ Graphics object used for drawing operations.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -197,7 +409,73 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public AppCanvas(int xSize, int ySize)</pre></td></tr></tbody></table>
+    private Graphics g</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field bmp</div>
+    <div id="Contents" />
+
+    
+ Backing bitmap that stores all drawing output.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private Bitmap bmp</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Constructor AppCanvas</div>
+    <div id="Contents" />
+
+    
+ Initializes a new instance of the <a href="" >AppCanvas</a> class.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private AppCanvas(int xSize, int ySize)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>xSize</div><div class='ParameterCommentContainer'>
@@ -229,7 +507,7 @@ Height of the canvas in pixels.
 <tr>
 <td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown if <span class="Code">xSize</span> or <span class="Code">ySize</span> is less than or equal to zero.
+ Thrown when width or height is less than or equal to zero.
  </td>
 </tr>
 </table
@@ -247,7 +525,7 @@ Height of the canvas in pixels.
     <div id="Contents" />
 
     
- Returns the underlying bitmap for display or saving.
+ Returns the underlying bitmap used for drawing.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -284,7 +562,7 @@ The backing <a href="" >Bitmap</a> as an <a href="" >object</a>.
     <div id="Contents" />
 
     
- Moves the drawing cursor to the specified coordinates without drawing.
+ Moves the drawing cursor to the specified position without drawing.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -303,10 +581,10 @@ The backing <a href="" >Bitmap</a> as an <a href="" >object</a>.
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>x</div><div class='ParameterCommentContainer'>
-The new X coordinate in pixels.
+New X coordinate.
 </div>
 <div class='CommentParameterName'>y</div><div class='ParameterCommentContainer'>
-The new X coordinate in pixels.
+New Y coordinate.
 </div>
 
     
@@ -324,8 +602,8 @@ The new X coordinate in pixels.
     <div id="Contents" />
 
     
- Draws a straight line from the current cursor position to the
- specified coordinates and updates the cursor position
+ Draws a straight line from the current cursor position to the specified point.
+ The cursor position is updated to the end point.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -344,10 +622,10 @@ The new X coordinate in pixels.
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>x</div><div class='ParameterCommentContainer'>
-End X coordinate in pixels.
+End X coordinate.
 </div>
 <div class='CommentParameterName'>y</div><div class='ParameterCommentContainer'>
-End Y coordinate in pixels.
+End Y coordinate.
 </div>
 
     
@@ -388,7 +666,7 @@ Radius of the circle in pixels.
 </div>
 <div class='CommentParameterName'>filled</div><div class='ParameterCommentContainer'>
 
- If <span class="Code">true</span>, a filled circle is drawn; otherwise only the outline is drawn.
+ If true, a filled circle is drawn; otherwise, only the outline is drawn.
  
 </div>
 
@@ -407,7 +685,7 @@ Radius of the circle in pixels.
     <div id="Contents" />
 
     
- Draws a rectangle starting at the current cursor position.
+ Draws a rectangle starting from the current cursor position.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -433,7 +711,7 @@ Height of the rectangle in pixels.
 </div>
 <div class='CommentParameterName'>filled</div><div class='ParameterCommentContainer'>
 
- If <span class="Code">true</span>, a filled rectangle is drawn; otherwise only the outline is drawn.
+ If true, a filled rectangle is drawn; otherwise, only the outline is drawn.
  
 </div>
 
@@ -452,7 +730,7 @@ Height of the rectangle in pixels.
     <div id="Contents" />
 
     
- Draws an outline trinagle using the current cursor position as one vertex.
+ Draws an outline triangle using the current cursor position as the top vertex.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -471,10 +749,10 @@ Height of the rectangle in pixels.
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>width</div><div class='ParameterCommentContainer'>
-Half the horizontal span of the triangle, in pixels.
+Half the horizontal span of the triangle.
 </div>
 <div class='CommentParameterName'>height</div><div class='ParameterCommentContainer'>
-Half the vertical span of the triangle, in pixels.
+Half the vertical span of the triangle.
 </div>
 
     
@@ -499,7 +777,7 @@ Half the vertical span of the triangle, in pixels.
 <tr>
 <td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown if <span class="Code">width</span> or <span class="Code">height</span> is negative.
+ Thrown when width or height is negative.
  </td>
 </tr>
 </table
@@ -583,7 +861,7 @@ Half the vertical span of the triangle, in pixels.
     <div id="Contents" />
 
     
- Draws a string of text at the current cursor position using the current pen color.
+ Draws text at the current cursor position using the current pen colour.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -602,7 +880,7 @@ Half the vertical span of the triangle, in pixels.
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>text</div><div class='ParameterCommentContainer'>
-The text to draw. If <span class="Code">null</span>, an empty string is used.
+Text to draw. If null, an empty string is used.
 </div>
 
     
@@ -620,7 +898,8 @@ The text to draw. If <span class="Code">null</span>, an empty string is used.
     <div id="Contents" />
 
     
- Clears the canvas to a white background without charging the cursor position.
+ Clears the canvas to a white background.
+ The cursor position is not changed.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -653,8 +932,8 @@ The text to draw. If <span class="Code">null</span>, an empty string is used.
     <div id="Contents" />
 
     
- Resets the canvas to its initial state: white background,
- cursor at (0,0), black pen color.
+ Resets the canvas to its initial state:
+ white background, cursor at (0,0), black pen colour.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -687,8 +966,8 @@ The text to draw. If <span class="Code">null</span>, an empty string is used.
     <div id="Contents" />
 
     
- Changes the size of the canvas to the specified width and height.
- Existing content is copied into the new bitmap where possible.
+ Resizes the canvas to the specified dimensions.
+ Existing content is preserved where possible.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -707,10 +986,10 @@ The text to draw. If <span class="Code">null</span>, an empty string is used.
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>width</div><div class='ParameterCommentContainer'>
-New width in pixels.
+New canvas width.
 </div>
 <div class='CommentParameterName'>height</div><div class='ParameterCommentContainer'>
-New height in pixels.
+New canvas height.
 </div>
 
     
@@ -735,7 +1014,7 @@ New height in pixels.
 <tr>
 <td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown if <span class="Code">width</span> or <span class="Code">height</span> is less than or equal to zero.
+ Thrown when width or height is less than or equal to zero.
  </td>
 </tr>
 </table
@@ -753,7 +1032,7 @@ New height in pixels.
     <div id="Contents" />
 
     
- Sets the current pencolor using red, green and blue components.
+ Sets the pen colour using RGB components.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -772,13 +1051,13 @@ New height in pixels.
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>r</div><div class='ParameterCommentContainer'>
-Red component (0-255).
+Red component (0–255).
 </div>
 <div class='CommentParameterName'>gComp</div><div class='ParameterCommentContainer'>
-Green component (0-255).
+Green component (0–255).
 </div>
 <div class='CommentParameterName'>b</div><div class='ParameterCommentContainer'>
-Blue component (0-255).
+Blue component (0–255).
 </div>
 
     
@@ -796,7 +1075,7 @@ Blue component (0-255).
     <div id="Contents" />
 
     
- Clamps a color component value to the range 0-255.
+ Clamps an integer value to the valid RGB range (0–255).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -816,12 +1095,12 @@ Blue component (0-255).
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>value</div><div class='ParameterCommentContainer'>
-Component value to clamp.
+Value to clamp.
 </div>
 
     <div class='CommentHeader'>Return Value</div>
 <div class='ParameterCommentContainer'>
-The clamped component value.
+A value between 0 and 255.
 </div>
 
     

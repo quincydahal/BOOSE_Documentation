@@ -7,47 +7,16 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class WriteTextCommand</div>
+    <div id="PageTitle">Class ForCommand</div>
     <div id="Contents" />
 
     
- Implements the BOOSE <span class="Code">write</span> command.
+ Implements the BOOSE <span class="Code">for</span> loop command.
 
- This command outputs text to the canvas at the current cursor position.
- It supports:
- <ul><li>Literal strings (e.g. <span class="Code">write "Hello"</span>)</li><li>Variables (int, real, boolean)</li><li>Arithmetic expressions (including real-number math)</li><li>String concatenation using the <span class="Code">+</span> operator</li></ul>
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class WriteTextCommand : CommandOneParameter, ICommand</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field ICanvas</div>
-    <div id="Contents" />
-
-    
- Canvas used to render text output.
+ This command controls iteration using a loop variable,
+ a start value, an end expression, and a step value.
+ It integrates with the extended control-flow mechanism
+ to support nested loops and correct loop termination.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -62,113 +31,10 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private readonly ICanvas canvas</pre></td></tr></tbody></table>
+    public class ForCommand : Command, ICommand</pre></td></tr></tbody></table>
     
     
     
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field program</div>
-    <div id="Contents" />
-
-    
- Reference to the active stored program, used for variable lookup
- and expression evaluation.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private StoredProgram program = null!</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field text</div>
-    <div id="Contents" />
-
-    
- Raw text parameter supplied to the write command.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private string text = string.Empty</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor WriteTextCommand</div>
-    <div id="Contents" />
-
-    
- Initializes a new instance of the <a href="" >WriteTextCommand</a> class.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public WriteTextCommand(ICanvas canvas)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
-Canvas used for drawing text.
-</div>
-
     
     
     
@@ -177,27 +43,223 @@ Canvas used for drawing text.
    <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
    <span class='SectionHeader'>
        <span class='ArrowCursor'>
-       Exceptions
+       Remarks
        </span>
    </span>
 </div>
 <div id='SectionContainerDiv1' class='SectionContainer'>
-<table class='MembersTable'>
-<col width='25%' />
-<col width='75%' />
-<tr>
-<th>Exception</th>
-<th>Condition</th></tr>
-<tr>
-<td><span class='PseudoLink'>BOOSEException</span></td>
-<td>
- Thrown when the canvas reference is <span class="Code">null</span>.
- </td>
-</tr>
-</table
+
+ Supported syntax:
+ <ul><li><span class="Code">for i = start to end step n</span></li></ul>
+
+ The loop variable is created or updated during initialization,
+ and the loop condition is evaluated at runtime to determine
+ whether execution should continue or exit the loop.
+ 
 </div>
 </div>
 
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field varName</div>
+    <div id="Contents" />
+
+    
+ Name of the loop control variable.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private string varName = &quot;&quot;</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field endExpr</div>
+    <div id="Contents" />
+
+    
+ Expression representing the loop termination value.
+ Evaluated dynamically at runtime.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private string endExpr = &quot;&quot;</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field start,</div>
+    <div id="Contents" />
+
+    
+ Initial value of the loop variable.
+ Step value applied to the loop variable on each iteration.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private int start, step</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field initialised</div>
+    <div id="Contents" />
+
+    
+ Indicates whether the loop has been correctly initialized.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private bool initialised</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Property LoopEndIndex</div>
+    <div id="Contents" />
+
+    
+ Index of the matching <span class="Code">end for</span> command in the program.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public int LoopEndIndex</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Property BodyStartIndex</div>
+    <div id="Contents" />
+
+    
+ Index at which the loop body begins.
+ This is typically the command immediately following
+ the injected variable initialization.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public int BodyStartIndex</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
     
     
 
@@ -209,7 +271,8 @@ Canvas used for drawing text.
     <div id="Contents" />
 
     
- Sets the stored program context and captures the text parameter.
+ Parses the for command and initializes the loop variable,
+ bounds, and step value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -231,7 +294,7 @@ Canvas used for drawing text.
 The active <a href="" >StoredProgram</a>.
 </div>
 <div class='CommentParameterName'>param</div><div class='ParameterCommentContainer'>
-Text, variable name, or expression to write.
+Parameter string defining the for loop.
 </div>
 
     
@@ -256,7 +319,7 @@ Text, variable name, or expression to write.
 <tr>
 <td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown when the program reference is <span class="Code">null</span>.
+ Thrown when the syntax is invalid or required components are missing.
  </td>
 </tr>
 </table
@@ -270,48 +333,14 @@ Text, variable name, or expression to write.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Compile</div>
-    <div id="Contents" />
-
-    
- Performs compile-time preparation.
-
- No evaluation is performed here because expressions and variables
- may change at runtime (e.g. inside loops).
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Compile()</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Method Execute</div>
     <div id="Contents" />
 
     
- Executes the write command by resolving the parameter and
- rendering the resulting text on the canvas.
+ Executes the for command by evaluating the loop condition.
+
+ If the condition evaluates to <span class="Code">false</span>, execution
+ jumps to the command immediately after the loop block.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -349,9 +378,9 @@ Text, variable name, or expression to write.
 <th>Exception</th>
 <th>Condition</th></tr>
 <tr>
-<td><span class='PseudoLink'>CommandException</span></td>
+<td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown when execution occurs without a valid stored program.
+ Thrown when the loop has not been initialized.
  </td>
 </tr>
 </table
@@ -365,11 +394,14 @@ Text, variable name, or expression to write.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method CheckParameters</div>
+    <div id="PageTitle">Method ParseInt</div>
     <div id="Contents" />
 
     
- Validates that the parameter array is not <span class="Code">null</span>.
+ Parses a token into an integer value.
+
+ The token may be a literal integer or an expression
+ evaluated at runtime.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -384,14 +416,18 @@ Text, variable name, or expression to write.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void CheckParameters(string[] parameters)</pre></td></tr></tbody></table>
+    private int ParseInt(string token)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>parameters</div><div class='ParameterCommentContainer'>
-Parsed parameter list.
+<div class='CommentParameterName'>token</div><div class='ParameterCommentContainer'>
+Token to parse.
 </div>
 
-    
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+The parsed integer value.
+</div>
+
     
     
     
@@ -413,7 +449,7 @@ Parsed parameter list.
 <tr>
 <td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown when parameters are <span class="Code">null</span>.
+ Thrown when the token cannot be evaluated to an integer.
  </td>
 </tr>
 </table
@@ -427,14 +463,11 @@ Parsed parameter list.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method TryEvaluateAsDouble</div>
+    <div id="PageTitle">Method GetEnd</div>
     <div id="Contents" />
 
     
- Attempts to evaluate an expression as a real (double) value.
-
- This method supports variables, arithmetic operators, and
- mixed integer/real expressions.
+ Evaluates the loop end expression and returns its integer value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -449,24 +482,75 @@ Parsed parameter list.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private bool TryEvaluateAsDouble(string expr, out double value, out bool involvesReal)</pre></td></tr></tbody></table>
+    private int GetEnd()</pre></td></tr></tbody></table>
     
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>expr</div><div class='ParameterCommentContainer'>
-Normalized expression string.
-</div>
-<div class='CommentParameterName'>value</div><div class='ParameterCommentContainer'>
-Evaluated numeric result.
-</div>
-<div class='CommentParameterName'>involvesReal</div><div class='ParameterCommentContainer'>
-
- Indicates whether real variables or decimal literals were involved.
- 
-</div>
-
+    
     <div class='CommentHeader'>Return Value</div>
 <div class='ParameterCommentContainer'>
-<span class="Code">true</span> if evaluation succeeded as a real expression;
+The evaluated loop end value.
+</div>
+
+    
+    
+    
+<div id='SectionHeader1' class='SectionHeader'>
+   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
+   <span class='SectionHeader'>
+       <span class='ArrowCursor'>
+       Exceptions
+       </span>
+   </span>
+</div>
+<div id='SectionContainerDiv1' class='SectionContainer'>
+<table class='MembersTable'>
+<col width='25%' />
+<col width='75%' />
+<tr>
+<th>Exception</th>
+<th>Condition</th></tr>
+<tr>
+<td><span class='PseudoLink'>BOOSEException</span></td>
+<td>
+ Thrown when the end expression cannot be evaluated to an integer.
+ </td>
+</tr>
+</table
+</div>
+</div>
+
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method EvaluateCondition</div>
+    <div id="Contents" />
+
+    
+ Evaluates the loop continuation condition based on the
+ current loop variable value, end value, and step direction.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public bool EvaluateCondition()</pre></td></tr></tbody></table>
+    
+    
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+<span class="Code">true</span> if the loop should continue;
  otherwise <span class="Code">false</span>.
  
 </div>
@@ -481,12 +565,11 @@ Evaluated numeric result.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method FormatNumber</div>
+    <div id="PageTitle">Method GetVarName</div>
     <div id="Contents" />
 
     
- Formats a numeric value for display, preserving real precision
- when real values or decimal literals are involved.
+ Gets the name of the loop control variable.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -501,24 +584,12 @@ Evaluated numeric result.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private static string FormatNumber(double d, bool involvesReal, string originalExpr)</pre></td></tr></tbody></table>
+    public string GetVarName() =&gt; varName</pre></td></tr></tbody></table>
     
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>d</div><div class='ParameterCommentContainer'>
-Numeric value to format.
-</div>
-<div class='CommentParameterName'>involvesReal</div><div class='ParameterCommentContainer'>
-
- Indicates whether real arithmetic was involved.
- 
-</div>
-<div class='CommentParameterName'>originalExpr</div><div class='ParameterCommentContainer'>
-Original expression string.
-</div>
-
+    
     <div class='CommentHeader'>Return Value</div>
 <div class='ParameterCommentContainer'>
-Formatted numeric string.
+The loop variable name.
 </div>
 
     
@@ -531,12 +602,11 @@ Formatted numeric string.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method NormalizeExpression</div>
+    <div id="PageTitle">Method GetIncrement</div>
     <div id="Contents" />
 
     
- Normalizes an arithmetic expression by spacing operators
- and parentheses to aid evaluation.
+ Gets the step increment applied on each loop iteration.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -551,18 +621,51 @@ Formatted numeric string.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private static string NormalizeExpression(string expr)</pre></td></tr></tbody></table>
+    public int GetIncrement() =&gt; step</pre></td></tr></tbody></table>
     
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>expr</div><div class='ParameterCommentContainer'>
-Raw expression string.
-</div>
-
+    
     <div class='CommentHeader'>Return Value</div>
 <div class='ParameterCommentContainer'>
-Normalized expression string.
+The step value.
 </div>
 
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method CheckParameters</div>
+    <div id="Contents" />
+
+    
+ Parameter checking is handled during parsing and execution.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void CheckParameters(string[] parameters)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>parameters</div><div class='ParameterCommentContainer'>
+Unused.
+</div>
+
+    
     
     
     

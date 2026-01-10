@@ -7,16 +7,14 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class CircleCommand</div>
+    <div id="PageTitle">Class PeekCommand</div>
     <div id="Contents" />
 
     
- Implements the <span class="Code">circle</span> drawing command for the BOOSE language.
+ Implements the BOOSE <span class="Code">peek</span> command.
 
- This command draws a circle on the canvas using a radius that may be
- a literal value, variable, or expression evaluated at runtime.
- An optional second parameter controls whether the circle is filled
- or outlined.
+ This command reads a value from a specified index of an array
+ and assigns it to an existing target variable.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -31,7 +29,59 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class CircleCommand : CommandTwoParameters, ICommand</pre></td></tr></tbody></table>
+    public class PeekCommand : Command, ICommand</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+<div id='SectionHeader1' class='SectionHeader'>
+   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
+   <span class='SectionHeader'>
+       <span class='ArrowCursor'>
+       Remarks
+       </span>
+   </span>
+</div>
+<div id='SectionContainerDiv1' class='SectionContainer'>
+
+ Supported syntax:
+ <ul><li><span class="Code">peek targetVar = arrayName index</span></li></ul>
+
+ The command supports both integer and real arrays. Type checking
+ is enforced to ensure that the target variable matches the array type.
+ 
+</div>
+</div>
+
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field targetVar</div>
+    <div id="Contents" />
+
+    
+ Name of the target variable that will receive the array value.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private string targetVar = &quot;&quot;</pre></td></tr></tbody></table>
     
     
     
@@ -45,11 +95,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field Canvas</div>
+    <div id="PageTitle">Field arrayName</div>
     <div id="Contents" />
 
     
- Canvas on which the circle will be drawn.
+ Name of the source array variable.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -64,7 +114,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private ICanvas Canvas</pre></td></tr></tbody></table>
+    private string arrayName = &quot;&quot;</pre></td></tr></tbody></table>
     
     
     
@@ -78,11 +128,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field program</div>
+    <div id="PageTitle">Field indexExpr</div>
     <div id="Contents" />
 
     
- Reference to the current stored program, used for expression evaluation.
+ Expression representing the array index to read.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -97,112 +147,9 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private StoredProgram program</pre></td></tr></tbody></table>
+    private string indexExpr = &quot;&quot;</pre></td></tr></tbody></table>
     
     
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method parameters</div>
-    <div id="Contents" />
-
-    
- Parsed parameters supplied to the command.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private string[] parameters = System.Array.Empty&lt;string&gt;()</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field filled</div>
-    <div id="Contents" />
-
-    
- Indicates whether the circle should be filled.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private bool filled = false</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor CircleCommand</div>
-    <div id="Contents" />
-
-    
- Initializes a new instance of the <a href="" >CircleCommand</a> class.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public CircleCommand(ICanvas canvas)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
-Canvas used for drawing operations.
-</div>
-
     
     
     
@@ -218,7 +165,8 @@ Canvas used for drawing operations.
     <div id="Contents" />
 
     
- Sets the stored program context and parses the parameter string.
+ Parses the peek command, extracting the target variable,
+ array name, and index expression.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -233,53 +181,14 @@ Canvas used for drawing operations.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Set(StoredProgram Program, string Params)</pre></td></tr></tbody></table>
+    public override void Set(StoredProgram program, string param)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>Program</div><div class='ParameterCommentContainer'>
+<div class='CommentParameterName'>program</div><div class='ParameterCommentContainer'>
 The active <a href="" >StoredProgram</a>.
 </div>
-<div class='CommentParameterName'>Params</div><div class='ParameterCommentContainer'>
-
- Parameter string containing the radius expression and optional filled flag.
- 
-</div>
-
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method CheckParameters</div>
-    <div id="Contents" />
-
-    
- Validates the number of parameters supplied to the command.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
-Array of parsed parameters.
+<div class='CommentParameterName'>param</div><div class='ParameterCommentContainer'>
+Parameter string defining the peek operation.
 </div>
 
     
@@ -304,7 +213,7 @@ Array of parsed parameters.
 <tr>
 <td><span class='PseudoLink'>CommandException</span></td>
 <td>
- Thrown when an invalid number of parameters is supplied.
+ Thrown when the syntax is invalid.
  </td>
 </tr>
 </table
@@ -322,10 +231,10 @@ Array of parsed parameters.
     <div id="Contents" />
 
     
- Performs compile-time validation of parameters.
+ Performs compile-time preparation.
 
- Radius and filled values may be expressions, so evaluation
- is deferred until execution.
+ Validation is deferred until execution because array indices
+ and values may depend on runtime expressions.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -358,8 +267,8 @@ Array of parsed parameters.
     <div id="Contents" />
 
     
- Executes the circle command by evaluating parameters and
- drawing the circle on the canvas.
+ Executes the peek command by retrieving a value from the array
+ and assigning it to the target variable.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -399,13 +308,51 @@ Array of parsed parameters.
 <tr>
 <td><span class='PseudoLink'>CommandException</span></td>
 <td>
- Thrown when parameter evaluation fails or values are invalid.
+ Thrown when the array or target variable does not exist,
+ the index is out of range, or a type mismatch occurs.
  </td>
 </tr>
 </table
 </div>
 </div>
 
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method CheckParameters</div>
+    <div id="Contents" />
+
+    
+ Parameter checking is handled during parsing and execution.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
+Unused.
+</div>
+
+    
+    
+    
+    
     
     
 

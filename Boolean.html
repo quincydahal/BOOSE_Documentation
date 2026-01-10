@@ -7,12 +7,15 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class RectCommand</div>
+    <div id="PageTitle">Class BooleanCommand</div>
     <div id="Contents" />
 
     
- Represents the BOOSE <span class="Code">rect</span> command.
- 
+ Implements a boolean variable command for the BOOSE language.
+
+ This command supports declaration and assignment of boolean variables.
+ Boolean expressions may consist of:
+ <ul><li>Boolean literals (<span class="Code">true</span>, <span class="Code">false</span>)</li><li>Logical operators (<span class="Code">&amp;&amp;</span>, <span class="Code">||</span>, <span class="Code">!</span>)</li><li>Boolean variables</li><li>Numeric expressions (non-zero = <span class="Code">true</span>)</li></ul>
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
         <span class='SectionHeader'>
@@ -26,7 +29,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class RectCommand : CommandOneParameter, ICommand</pre></td></tr></tbody></table>
+    public class BooleanCommand : Evaluation, ICommand</pre></td></tr></tbody></table>
     
     
     
@@ -44,8 +47,9 @@
 </div>
 <div id='SectionContainerDiv1' class='SectionContainer'>
 
- Parses width and height (and an optional filled flag) and draws a rectangle
- on the <a href="" >ICanvas</a> when executed.
+ BOOSE internally stores variable values as integers.
+ This command therefore bridges boolean values to integers
+ using <span class="Code">1</span> for <span class="Code">true</span> and <span class="Code">0</span> for <span class="Code">false</span>.
  
 </div>
 </div>
@@ -56,11 +60,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field ICanvas</div>
+    <div id="PageTitle">Field boolValue</div>
     <div id="Contents" />
 
     
- Canvas used to render the rectangle when the command executes.
+ Internal storage of the boolean value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -75,7 +79,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private readonly ICanvas canvas</pre></td></tr></tbody></table>
+    private bool boolValue</pre></td></tr></tbody></table>
     
     
     
@@ -89,12 +93,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method parameters</div>
+    <div id="PageTitle">Member</div>
     <div id="Contents" />
 
     
- Raw parameter tokens parsed from the script
- (width, height and optional filled flag).
+ Gets the current boolean value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -109,7 +112,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private string[] parameters = System.Array.Empty&lt;string&gt;()</pre></td></tr></tbody></table>
+    public bool BoolValue =&gt; boolValue</pre></td></tr></tbody></table>
     
     
     
@@ -123,11 +126,13 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field width</div>
+    <div id="PageTitle">Property Value</div>
     <div id="Contents" />
 
     
- Parsed width of the rectangle.
+ Integer bridge required by the BOOSE evaluation system.
+
+ <span class="Code">true</span> is represented as <span class="Code">1</span>, and <span class="Code">false</span> as <span class="Code">0</span>.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -142,115 +147,9 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private int width</pre></td></tr></tbody></table>
+    public override int Value</pre></td></tr></tbody></table>
     
     
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field height</div>
-    <div id="Contents" />
-
-    
- Parsed height of the rectangle.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private int height</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field filled</div>
-    <div id="Contents" />
-
-    
- Indicates whether the rectangle should be filled.
- <span class="Code">false</span> means outline only.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private bool filled = false</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor RectCommand</div>
-    <div id="Contents" />
-
-    
- Initializes a new instance of the <a href="" >RectCommand</a> class.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public RectCommand(ICanvas canvas)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
-
- The <a href="" >ICanvas</a> implementation that will be used to draw the rectangle.
- 
-</div>
-
     
     
     
@@ -266,8 +165,8 @@
     <div id="Contents" />
 
     
- Sets the stored program context and raw parameter string
- for the command, then tokenizes the parameters.
+ Parses the boolean command, extracting the variable name
+ and associated expression.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -286,51 +185,11 @@
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>program</div><div class='ParameterCommentContainer'>
-The <a href="" >StoredProgram</a> this command belongs to.
+The active <a href="" >StoredProgram</a>.
 </div>
 <div class='CommentParameterName'>param</div><div class='ParameterCommentContainer'>
 
- The raw parameter string from the script, e.g. <span class="Code">"100, 50, filled"</span>.
- 
-</div>
-
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method CheckParameters</div>
-    <div id="Contents" />
-
-    
- Validates that 2 or 3 parameters have been supplied
- (width, height, and optional filled flag).
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void CheckParameters(string[] parameters)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>parameters</div><div class='ParameterCommentContainer'>
-
- The array of parameter tokens to validate.
+ Parameter string containing the variable name and optional expression.
  
 </div>
 
@@ -356,7 +215,7 @@ The <a href="" >StoredProgram</a> this command belongs to.
 <tr>
 <td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown if fewer than 2 or more than 3 parameters are supplied.
+ Thrown when the program reference is <span class="Code">null</span>.
  </td>
 </tr>
 </table
@@ -374,8 +233,10 @@ The <a href="" >StoredProgram</a> this command belongs to.
     <div id="Contents" />
 
     
- Compiles the parameters into strongly-typed width, height and
- optional filled flag.
+ Performs compile-time processing for boolean declarations.
+
+ A boolean variable is created only once. Redeclaration
+ is ignored to match reference BOOSE behaviour.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -397,32 +258,6 @@ The <a href="" >StoredProgram</a> this command belongs to.
     
     
     
-<div id='SectionHeader1' class='SectionHeader'>
-   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
-   <span class='SectionHeader'>
-       <span class='ArrowCursor'>
-       Exceptions
-       </span>
-   </span>
-</div>
-<div id='SectionContainerDiv1' class='SectionContainer'>
-<table class='MembersTable'>
-<col width='25%' />
-<col width='75%' />
-<tr>
-<th>Exception</th>
-<th>Condition</th></tr>
-<tr>
-<td><span class='PseudoLink'>BOOSEException</span></td>
-<td>
- Thrown if width/height cannot be parsed as integers or the filled flag
- is not recognised.
- </td>
-</tr>
-</table
-</div>
-</div>
-
     
     
 
@@ -434,8 +269,8 @@ The <a href="" >StoredProgram</a> this command belongs to.
     <div id="Contents" />
 
     
- Executes the command by drawing a rectangle on the canvas
- using the compiled width, height and filled flag.
+ Executes the boolean command by evaluating the expression
+ and updating the stored variable value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -453,6 +288,88 @@ The <a href="" >StoredProgram</a> this command belongs to.
     public override void Execute()</pre></td></tr></tbody></table>
     
     
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method EvalBool</div>
+    <div id="Contents" />
+
+    
+ Evaluates a boolean expression.
+
+ Supports logical OR (<span class="Code">||</span>), AND (<span class="Code">&amp;&amp;</span>),
+ NOT (<span class="Code">!</span>), boolean literals, variables, and numeric
+ expressions.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private bool EvalBool(string expr)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>expr</div><div class='ParameterCommentContainer'>
+Boolean expression string.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+The evaluated boolean result.
+</div>
+
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method CheckParameters</div>
+    <div id="Contents" />
+
+    
+ Parameter checking is handled during parsing and evaluation.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
+Unused.
+</div>
+
     
     
     

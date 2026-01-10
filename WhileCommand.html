@@ -7,16 +7,16 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class CircleCommand</div>
+    <div id="PageTitle">Class WhileCommand</div>
     <div id="Contents" />
 
     
- Implements the <span class="Code">circle</span> drawing command for the BOOSE language.
+ Implements the BOOSE <span class="Code">while</span> command.
 
- This command draws a circle on the canvas using a radius that may be
- a literal value, variable, or expression evaluated at runtime.
- An optional second parameter controls whether the circle is filled
- or outlined.
+ This command repeatedly executes a block of commands
+ while a specified boolean condition evaluates to <span class="Code">true</span>.
+ It supports nested loops and integrates with the
+ extended control-flow infrastructure.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -31,7 +31,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class CircleCommand : CommandTwoParameters, ICommand</pre></td></tr></tbody></table>
+    public class WhileCommand : Command, ICommand</pre></td></tr></tbody></table>
     
     
     
@@ -45,11 +45,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field Canvas</div>
+    <div id="PageTitle">Field condition</div>
     <div id="Contents" />
 
     
- Canvas on which the circle will be drawn.
+ Raw condition string supplied to the while command.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -64,7 +64,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private ICanvas Canvas</pre></td></tr></tbody></table>
+    private string condition = &quot;&quot;</pre></td></tr></tbody></table>
     
     
     
@@ -78,11 +78,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field program</div>
+    <div id="PageTitle">Field StartIndex</div>
     <div id="Contents" />
 
     
- Reference to the current stored program, used for expression evaluation.
+ Index of the while command within the program.
+ Used as the loop start position.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -97,7 +98,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private StoredProgram program</pre></td></tr></tbody></table>
+    public int StartIndex</pre></td></tr></tbody></table>
     
     
     
@@ -111,11 +112,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method parameters</div>
+    <div id="PageTitle">Field EndIndex</div>
     <div id="Contents" />
 
     
- Parsed parameters supplied to the command.
+ Index of the matching end-while command.
+ Used as the loop end position.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -130,79 +132,9 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private string[] parameters = System.Array.Empty&lt;string&gt;()</pre></td></tr></tbody></table>
+    public int EndIndex</pre></td></tr></tbody></table>
     
     
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field filled</div>
-    <div id="Contents" />
-
-    
- Indicates whether the circle should be filled.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private bool filled = false</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor CircleCommand</div>
-    <div id="Contents" />
-
-    
- Initializes a new instance of the <a href="" >CircleCommand</a> class.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public CircleCommand(ICanvas canvas)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
-Canvas used for drawing operations.
-</div>
-
     
     
     
@@ -218,7 +150,7 @@ Canvas used for drawing operations.
     <div id="Contents" />
 
     
- Sets the stored program context and parses the parameter string.
+ Parses the while command and stores the loop condition.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -233,53 +165,14 @@ Canvas used for drawing operations.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Set(StoredProgram Program, string Params)</pre></td></tr></tbody></table>
+    public override void Set(StoredProgram program, string param)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>Program</div><div class='ParameterCommentContainer'>
+<div class='CommentParameterName'>program</div><div class='ParameterCommentContainer'>
 The active <a href="" >StoredProgram</a>.
 </div>
-<div class='CommentParameterName'>Params</div><div class='ParameterCommentContainer'>
-
- Parameter string containing the radius expression and optional filled flag.
- 
-</div>
-
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method CheckParameters</div>
-    <div id="Contents" />
-
-    
- Validates the number of parameters supplied to the command.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
-Array of parsed parameters.
+<div class='CommentParameterName'>param</div><div class='ParameterCommentContainer'>
+Condition expression for the loop.
 </div>
 
     
@@ -304,7 +197,7 @@ Array of parsed parameters.
 <tr>
 <td><span class='PseudoLink'>CommandException</span></td>
 <td>
- Thrown when an invalid number of parameters is supplied.
+ Thrown when the condition is missing or empty.
  </td>
 </tr>
 </table
@@ -318,14 +211,51 @@ Array of parsed parameters.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method CheckParameters</div>
+    <div id="Contents" />
+
+    
+ Parameter checking is handled during parsing.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
+Unused.
+</div>
+
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Method Compile</div>
     <div id="Contents" />
 
     
- Performs compile-time validation of parameters.
+ Performs compile-time setup for the while loop.
 
- Radius and filled values may be expressions, so evaluation
- is deferred until execution.
+ Records the loop start index and registers the loop
+ with the extended program control-flow stacks.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -358,8 +288,10 @@ Array of parsed parameters.
     <div id="Contents" />
 
     
- Executes the circle command by evaluating parameters and
- drawing the circle on the canvas.
+ Executes the while command by evaluating the loop condition.
+
+ If the condition evaluates to <span class="Code">false</span>, execution
+ jumps to the command immediately after the loop block.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -381,6 +313,53 @@ Array of parsed parameters.
     
     
     
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method Evaluate</div>
+    <div id="Contents" />
+
+    
+ Evaluates the loop condition as a boolean expression.
+
+ Variable names are replaced with their current values,
+ and logical operators are normalized to allow evaluation
+ using <a href="" >Compute</a>.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public bool Evaluate(string cond)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>cond</div><div class='ParameterCommentContainer'>
+Raw condition expression.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+<span class="Code">true</span> if the condition evaluates to true;
+ otherwise <span class="Code">false</span>.
+ 
+</div>
+
+    
+    
+    
 <div id='SectionHeader1' class='SectionHeader'>
    <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
    <span class='SectionHeader'>
@@ -399,13 +378,46 @@ Array of parsed parameters.
 <tr>
 <td><span class='PseudoLink'>CommandException</span></td>
 <td>
- Thrown when parameter evaluation fails or values are invalid.
+ Thrown when the expression cannot be evaluated.
  </td>
 </tr>
 </table
 </div>
 </div>
 
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Member</div>
+    <div id="Contents" />
+
+    
+ Gets the raw condition string associated with the loop.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public string Condition =&gt; condition</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
     
     
 

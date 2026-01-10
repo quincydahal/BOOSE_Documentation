@@ -7,16 +7,17 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class CircleCommand</div>
+    <div id="PageTitle">Class ExtendedStoredProgram</div>
     <div id="Contents" />
 
     
- Implements the <span class="Code">circle</span> drawing command for the BOOSE language.
+ Extended implementation of the BOOSE <a href="" >StoredProgram</a> class.
 
- This command draws a circle on the canvas using a radius that may be
- a literal value, variable, or expression evaluated at runtime.
- An optional second parameter controls whether the circle is filled
- or outlined.
+ This class adds application-specific support for:
+ <ul><li>Methods and method calls</li><li>IF / ELSE / END IF control flow</li><li>FOR / END FOR loops</li><li>WHILE / END WHILE loops</li></ul>
+
+ It manages additional stacks and lookup tables required
+ for correct control-flow linking and execution.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -31,7 +32,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class CircleCommand : CommandTwoParameters, ICommand</pre></td></tr></tbody></table>
+    public class ExtendedStoredProgram : StoredProgram</pre></td></tr></tbody></table>
     
     
     
@@ -45,11 +46,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field Canvas</div>
+    <div id="PageTitle">Property MethodTable</div>
     <div id="Contents" />
 
     
- Canvas on which the circle will be drawn.
+ Maps method names to the index of their <a href="" >MethodCommand</a>
+ within the program.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -64,7 +66,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private ICanvas Canvas</pre></td></tr></tbody></table>
+    public Dictionary&lt;string, int&gt; MethodTable</pre></td></tr></tbody></table>
     
     
     
@@ -78,11 +80,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field program</div>
+    <div id="PageTitle">Method IfStack</div>
     <div id="Contents" />
 
     
- Reference to the current stored program, used for expression evaluation.
+ Stack used to track the evaluation results of nested IF statements.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -97,7 +99,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private StoredProgram program</pre></td></tr></tbody></table>
+    public Stack&lt;bool&gt; IfStack = new()</pre></td></tr></tbody></table>
     
     
     
@@ -111,11 +113,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method parameters</div>
+    <div id="PageTitle">Method LoopStack</div>
     <div id="Contents" />
 
     
- Parsed parameters supplied to the command.
+ Stack used to track loop start indices (WHILE / FOR).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -130,7 +132,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private string[] parameters = System.Array.Empty&lt;string&gt;()</pre></td></tr></tbody></table>
+    public Stack&lt;int&gt; LoopStack = new()</pre></td></tr></tbody></table>
     
     
     
@@ -144,11 +146,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field filled</div>
+    <div id="PageTitle">Method BlockStack</div>
     <div id="Contents" />
 
     
- Indicates whether the circle should be filled.
+ Stack used to track block structure (e.g. "while", "for").
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -163,7 +165,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private bool filled = false</pre></td></tr></tbody></table>
+    public Stack&lt;string&gt; BlockStack = new()</pre></td></tr></tbody></table>
     
     
     
@@ -177,11 +179,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor CircleCommand</div>
+    <div id="PageTitle">Property ReturnStack</div>
     <div id="Contents" />
 
     
- Initializes a new instance of the <a href="" >CircleCommand</a> class.
+ Stack used to store return addresses for method calls.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -196,52 +198,79 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public CircleCommand(ICanvas canvas)</pre></td></tr></tbody></table>
+    public Stack&lt;int&gt; ReturnStack</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Property DeclaredVars</div>
+    <div id="Contents" />
+
+    
+ Tracks variables that have already been declared
+ to prevent duplicate declaration.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private HashSet&lt;string&gt; DeclaredVars</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Constructor ExtendedStoredProgram</div>
+    <div id="Contents" />
+
+    
+ Initializes a new instance of the <a href="" >ExtendedStoredProgram</a> class.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public ExtendedStoredProgram(ICanvas canvas) : base(canvas)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
-Canvas used for drawing operations.
-</div>
 
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Set</div>
-    <div id="Contents" />
-
-    
- Sets the stored program context and parses the parameter string.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Set(StoredProgram Program, string Params)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>Program</div><div class='ParameterCommentContainer'>
-The active <a href="" >StoredProgram</a>.
-</div>
-<div class='CommentParameterName'>Params</div><div class='ParameterCommentContainer'>
-
- Parameter string containing the radius expression and optional filled flag.
+ The <a href="" >ICanvas</a> instance used by drawing commands.
  
 </div>
 
@@ -256,11 +285,14 @@ The active <a href="" >StoredProgram</a>.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method CheckParameters</div>
+    <div id="PageTitle">Method ResetCustomState</div>
     <div id="Contents" />
 
     
- Validates the number of parameters supplied to the command.
+ Resets all custom state used by extended control-flow features.
+
+ This method is typically called before parsing and executing
+ a new BOOSE program.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -275,14 +307,128 @@ The active <a href="" >StoredProgram</a>.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
+    public void ResetCustomState()</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method EnsureIntDeclared</div>
+    <div id="Contents" />
+
+    
+ Ensures that an integer variable exists in the program.
+
+ If the variable has not yet been declared, it is created
+ and initialized with the specified value.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public void EnsureIntDeclared(string varName, int initialValue = 0)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
-Array of parsed parameters.
+<div class='CommentParameterName'>varName</div><div class='ParameterCommentContainer'>
+Name of the variable.
+</div>
+<div class='CommentParameterName'>initialValue</div><div class='ParameterCommentContainer'>
+Initial integer value.
 </div>
 
     
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Member</div>
+    <div id="Contents" />
+
+    
+ Gets the total number of commands in the program.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public int CommandCount =&gt; Count</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method GetCommand</div>
+    <div id="Contents" />
+
+    
+ Retrieves a command at the specified index and ensures
+ it is a valid <a href="" >ICommand</a>.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public ICommand GetCommand(int index)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>index</div><div class='ParameterCommentContainer'>
+Command index.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+The command at the specified index.
+</div>
+
     
     
     
@@ -302,9 +448,9 @@ Array of parsed parameters.
 <th>Exception</th>
 <th>Condition</th></tr>
 <tr>
-<td><span class='PseudoLink'>CommandException</span></td>
+<td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown when an invalid number of parameters is supplied.
+ Thrown when the index is out of range or the item is not a command.
  </td>
 </tr>
 </table
@@ -318,14 +464,17 @@ Array of parsed parameters.
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Compile</div>
+    <div id="PageTitle">Method LinkControlFlow</div>
     <div id="Contents" />
 
     
- Performs compile-time validation of parameters.
+ Links all control-flow constructs in the program.
 
- Radius and filled values may be expressions, so evaluation
- is deferred until execution.
+ This method matches:
+ <ul><li>method / end method</li><li>for / end for</li></ul>
+
+ It records jump targets, validates nesting,
+ and prepares the program for execution.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -340,41 +489,7 @@ Array of parsed parameters.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Compile()</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Execute</div>
-    <div id="Contents" />
-
-    
- Executes the circle command by evaluating parameters and
- drawing the circle on the canvas.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Execute()</pre></td></tr></tbody></table>
+    public void LinkControlFlow()</pre></td></tr></tbody></table>
     
     
     
@@ -397,9 +512,9 @@ Array of parsed parameters.
 <th>Exception</th>
 <th>Condition</th></tr>
 <tr>
-<td><span class='PseudoLink'>CommandException</span></td>
+<td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown when parameter evaluation fails or values are invalid.
+ Thrown when unmatched or duplicate control-flow blocks are detected.
  </td>
 </tr>
 </table

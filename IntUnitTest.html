@@ -7,11 +7,13 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class MoveToUnitTest</div>
+    <div id="PageTitle">Class IntUnitTest</div>
     <div id="Contents" />
 
     
- MoveTo command unit tests.
+ Unit tests for the IntCommand.
+ These tests verify correct handling of integer variables,
+ including validation, declaration, and assignment behaviour.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -26,7 +28,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class MoveToUnitTest</pre></td></tr></tbody></table>
+    public class IntUnitTest</pre></td></tr></tbody></table>
     
     
     
@@ -40,12 +42,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MultiLineProgram_PenEndsAtExpectedPosition</div>
+    <div id="PageTitle">Method IntCommand_Set_Empty_ThrowsException</div>
     <div id="Contents" />
 
     
- Unit Test for a multiline program:
- several MoveTo/DrawTo commands are called and pen is in expected position.
+ Verifies that attempting to set an IntCommand with
+ an empty or whitespace-only parameter throws a BOOSEException.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -60,7 +62,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MultiLineProgram_PenEndsAtExpectedPosition()</pre></td></tr></tbody></table>
+    public void IntCommand_Set_Empty_ThrowsException()</pre></td></tr></tbody></table>
     
     
     
@@ -74,12 +76,13 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MoveTo_NonIntegerX_ThrowsBOOSEException</div>
+    <div id="PageTitle">Method IntCommand_Compile_Declaration_AddsVariableAndInitializesValue</div>
     <div id="Contents" />
 
     
- Commands MoveTo with a non-integer X coordinate
- and expects a <a href="" >BOOSEException</a> during compilation.
+ Verifies that declaring an integer variable using Compile
+ correctly adds the variable to the program and initializes
+ it with the specified value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -94,7 +97,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MoveTo_NonIntegerX_ThrowsBOOSEException()</pre></td></tr></tbody></table>
+    public void IntCommand_Compile_Declaration_AddsVariableAndInitializesValue()</pre></td></tr></tbody></table>
     
     
     
@@ -108,12 +111,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MoveTo_NonIntegerY_ThrowsBOOSEException</div>
+    <div id="PageTitle">Method IntCommand_Execute_AssignmentOnly_UpdatesExistingVariable</div>
     <div id="Contents" />
 
     
- Commands MoveTo with a non-integer Y coordinate
- and expects a <a href="" >BOOSEException</a> during compilation.
+ Verifies that assigning a new value to an existing integer
+ variable updates the stored value without redeclaring it.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -128,41 +131,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MoveTo_NonIntegerY_ThrowsBOOSEException()</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MoveTo_InvalidParameterCount_ThrowsBOOSEException</div>
-    <div id="Contents" />
-
-    
- Commands MoveTo with an incorrect number of parameters
- and expects a <a href="" >BOOSEException</a> from parameter checking.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MoveTo_InvalidParameterCount_ThrowsBOOSEException()</pre></td></tr></tbody></table>
+    public void IntCommand_Execute_AssignmentOnly_UpdatesExistingVariable()</pre></td></tr></tbody></table>
     
     
     

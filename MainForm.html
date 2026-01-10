@@ -11,9 +11,13 @@
     <div id="Contents" />
 
     
- Main WinForms user interface for the BOOSE canvas application.
- Hosts the program editor, canvas display and output window and
- coordinate running BOOSE programs using the BOOSE library classes.
+ Main WinForms user interface for the BOOSE Canvas Application.
+
+ This form hosts:
+ - the program editor,
+ - the output console,
+ - the drawing canvas,
+ and is responsible for parsing, compiling, and executing BOOSE scripts.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -46,7 +50,7 @@
     <div id="Contents" />
 
     
- Canvas implementation used to render BOOSE drawing commands.
+ Canvas implementation used to render all BOOSE drawing commands.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -75,11 +79,143 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field program</div>
+    <div id="Contents" />
+
+    
+ BOOSE stored program that maintains commands, variables, and execution state.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private ExtendedStoredProgram program</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field parser</div>
+    <div id="Contents" />
+
+    
+ BOOSE parser responsible for converting script lines into executable commands.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private Parser parser</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field factory</div>
+    <div id="Contents" />
+
+    
+ Factory that maps BOOSE command names to concrete command implementations.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private CommandFactory factory</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field currentPenColour</div>
+    <div id="Contents" />
+
+    
+ Last pen colour selected by the user via the UI.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private Color currentPenColour = Color.Black</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Field showGrid</div>
     <div id="Contents" />
 
     
- Controls whether the optional gride overlay is drawn on the canvas.
+ Indicates whether the optional grid overlay is enabled.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -108,12 +244,56 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method IsAssignmentLine</div>
+    <div id="Contents" />
+
+    
+ Determines whether a script line represents an assignment
+ (e.g. <span class="Code">x = expr</span>) rather than a declaration
+ (e.g. <span class="Code">int x = 5</span> or <span class="Code">real y = 3.5</span>).
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private static bool IsAssignmentLine(string line)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>line</div><div class='ParameterCommentContainer'>
+A single line from the script editor.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+<span class="Code">true</span> if the line is an assignment; otherwise <span class="Code">false</span>.
+ 
+</div>
+
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Constructor Form1</div>
     <div id="Contents" />
 
     
- Initializes a new instance of the <a href="" >Form1</a> class,
- sets up the canvas and BOOSE core objects and displays a demo class.
+ Initializes the form, sets up the canvas, BOOSE engine components,
+ and draws a small demonstration shape on startup.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -146,13 +326,9 @@
     <div id="Contents" />
 
     
- Parses and runs the BOOSE program currently contained in the
- program editor textbox (<a href="" >textBox1</a>).
- Reuses the existing <a href="" >StoredProgram</a>,
- <a href="" >Parser</a> and <a href="" >CommandFactory</a> instances
- created in the constructor. Before each run the stored program is
- reset so that any previous commands and variables are cleared.
- Any errors are written to the output window (<a href="" >textBox2</a>).
+ Parses and executes the BOOSE program entered in the editor.
+ Assignment statements are automatically converted into
+ <span class="Code">set</span> commands before execution.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -181,12 +357,54 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method NormalizeCompoundCommand</div>
+    <div id="Contents" />
+
+    
+ Normalizes compound BOOSE commands such as
+ <span class="Code">end if</span>, <span class="Code">end while</span>, and <span class="Code">end for</span>
+ into single-token equivalents for the parser.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private static string NormalizeCompoundCommand(string line)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>line</div><div class='ParameterCommentContainer'>
+Input command line.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+Normalized command line.
+</div>
+
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
     <div id="PageTitle">Method AppendOut</div>
     <div id="Contents" />
 
     
- Appends a  single line of text to the output window
- (<a href="" >textBox2</a>), ignoring empty or whitespace-only messages.
+ Appends a message to the output console textbox.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -205,7 +423,7 @@
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>msg</div><div class='ParameterCommentContainer'>
-The message to append.
+Message to append.
 </div>
 
     
@@ -223,8 +441,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the PictureBox paint event and draws an optional
- dotted grid overlay on top of the canvas image.
+ Paint handler used to draw an optional dotted grid overlay.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -257,7 +474,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the form load event. Currently no special behaviour is required.
+ Form load handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -290,7 +507,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for output textbox text changed event.
+ Output textbox text-changed handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -307,14 +524,7 @@ The message to append.
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
     private void OutputText_TextChanged(object sender, EventArgs e)</pre></td></tr></tbody></table>
     
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>sender</div><div class='ParameterCommentContainer'>
-
-</div>
-<div class='CommentParameterName'>e</div><div class='ParameterCommentContainer'>
-
-</div>
-
+    
     
     
     
@@ -330,7 +540,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Run toolbar button click; executes the current BOOSE program.
+ Runs the BOOSE program.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -363,8 +573,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Clear toolbar button click; clears the canvas, program
- editor and output window.
+ Clears the canvas, editor, and output window.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -397,8 +606,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Reset toolbar button click; resets the canvas state
- (cursor position and pen colour) but leaves the program text unchanged.
+ Resets the canvas state while preserving the script text.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -431,8 +639,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the About toolbar button click; displays information returned
- from the BOOSE library <a href="" >about</a> method.
+ Displays information about the BOOSE library.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -465,8 +672,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Color toolbar button click; opens a colour dialog and,
- if confirmed, applies the chosen colour to the canvas pen.
+ Opens a colour picker and applies the chosen colour to the canvas pen.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -499,8 +705,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Save PNG toolbar button click; saves the current canvas
- image to a PNG file chosen by the user.
+ Saves the current canvas image and BOOSE script to disk.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -533,8 +738,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Copy toolbar button click; copies the current canvas
- image to the system clipboard.
+ Copies the canvas image to the clipboard.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -567,8 +771,7 @@ The message to append.
     <div id="Contents" />
 
     
- Handles the Copy toolbar button click; copies the current canvas
- image to the system clipboard.
+ Toggles the grid overlay on the canvas.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -601,7 +804,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for program text changes (not currently used).
+ Program text changed handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -634,7 +837,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for custom painting of the canvas host panel.
+ Canvas host paint handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -667,7 +870,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for program textbox text changes.
+ Editor text changed handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -700,7 +903,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for program textbox text changes (designer wiring).
+ Editor text changed handler (designer wiring; not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -733,7 +936,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for output textbox text changes.
+ Output text changed handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -766,7 +969,7 @@ The message to append.
     <div id="Contents" />
 
     
- Reserved handler for clicking the canvas picture box.
+ Canvas click handler (not used currently).
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -782,6 +985,105 @@ The message to append.
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
     private void pictureBox1_Click(object sender, EventArgs e)</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method btnPenAdd_Click</div>
+    <div id="Contents" />
+
+    
+ Increases pen size up to a max value.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private void btnPenAdd_Click(object sender, EventArgs e)</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method btnPenSub_Click</div>
+    <div id="Contents" />
+
+    
+ Decreases pen size down to a minimum value.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private void btnPenSub_Click(object sender, EventArgs e)</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method btnHelp_Click</div>
+    <div id="Contents" />
+
+    
+ Displays a help dialog listing supported BOOSE commands.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private void btnHelp_Click(object sender, EventArgs e)</pre></td></tr></tbody></table>
     
     
     

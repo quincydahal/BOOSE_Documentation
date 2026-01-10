@@ -7,16 +7,16 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class CircleCommand</div>
+    <div id="PageTitle">Class RectCommand</div>
     <div id="Contents" />
 
     
- Implements the <span class="Code">circle</span> drawing command for the BOOSE language.
+ Implements the <span class="Code">rect</span> drawing command for the BOOSE language.
 
- This command draws a circle on the canvas using a radius that may be
- a literal value, variable, or expression evaluated at runtime.
- An optional second parameter controls whether the circle is filled
- or outlined.
+ This command draws a rectangle on the canvas using width and height
+ values that may be literal numbers, variables, or expressions
+ evaluated at runtime. An optional third parameter controls whether
+ the rectangle is filled or outlined.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -31,7 +31,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class CircleCommand : CommandTwoParameters, ICommand</pre></td></tr></tbody></table>
+    public class RectCommand : CommandTwoParameters, ICommand</pre></td></tr></tbody></table>
     
     
     
@@ -49,7 +49,7 @@
     <div id="Contents" />
 
     
- Canvas on which the circle will be drawn.
+ Canvas on which the rectangle will be drawn.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -148,7 +148,7 @@
     <div id="Contents" />
 
     
- Indicates whether the circle should be filled.
+ Indicates whether the rectangle should be filled.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -177,11 +177,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor CircleCommand</div>
+    <div id="PageTitle">Constructor RectCommand</div>
     <div id="Contents" />
 
     
- Initializes a new instance of the <a href="" >CircleCommand</a> class.
+ Initializes a new instance of the <a href="" >RectCommand</a> class.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -196,7 +196,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public CircleCommand(ICanvas canvas)</pre></td></tr></tbody></table>
+    public RectCommand(ICanvas canvas)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
@@ -233,7 +233,7 @@ Canvas used for drawing operations.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Set(StoredProgram Program, string Params)</pre></td></tr></tbody></table>
+    public override void Set(BOOSE.StoredProgram Program, string Params)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>Program</div><div class='ParameterCommentContainer'>
@@ -241,7 +241,7 @@ The active <a href="" >StoredProgram</a>.
 </div>
 <div class='CommentParameterName'>Params</div><div class='ParameterCommentContainer'>
 
- Parameter string containing the radius expression and optional filled flag.
+ Parameter string containing width, height, and an optional filled flag.
  
 </div>
 
@@ -324,8 +324,8 @@ Array of parsed parameters.
     
  Performs compile-time validation of parameters.
 
- Radius and filled values may be expressions, so evaluation
- is deferred until execution.
+ Evaluation of expressions is deferred until execution to support
+ variables, expressions, and changing values inside loops.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -358,8 +358,8 @@ Array of parsed parameters.
     <div id="Contents" />
 
     
- Executes the circle command by evaluating parameters and
- drawing the circle on the canvas.
+ Executes the rectangle command by evaluating parameters and
+ drawing the rectangle on the canvas.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >

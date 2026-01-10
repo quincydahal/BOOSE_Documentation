@@ -7,11 +7,13 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class MoveToUnitTest</div>
+    <div id="PageTitle">Class BooleanUnitTest</div>
     <div id="Contents" />
 
     
- MoveTo command unit tests.
+ Unit tests for the BooleanCommand.
+ These tests verify correct behaviour of boolean variables,
+ including value bridging, declaration, and expression evaluation.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -26,7 +28,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class MoveToUnitTest</pre></td></tr></tbody></table>
+    public class BooleanUnitTest</pre></td></tr></tbody></table>
     
     
     
@@ -40,12 +42,13 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MultiLineProgram_PenEndsAtExpectedPosition</div>
+    <div id="PageTitle">Method Value_bridges_int_and_bool</div>
     <div id="Contents" />
 
     
- Unit Test for a multiline program:
- several MoveTo/DrawTo commands are called and pen is in expected position.
+ Verifies that the Value property correctly bridges
+ between BOOSE's internal integer representation
+ and the boolean value exposed by BooleanCommand.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -60,7 +63,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MultiLineProgram_PenEndsAtExpectedPosition()</pre></td></tr></tbody></table>
+    public void Value_bridges_int_and_bool()</pre></td></tr></tbody></table>
     
     
     
@@ -74,12 +77,13 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MoveTo_NonIntegerX_ThrowsBOOSEException</div>
+    <div id="PageTitle">Method Compile_boolean_declaration_with_literal_true_sets_value_to_1</div>
     <div id="Contents" />
 
     
- Commands MoveTo with a non-integer X coordinate
- and expects a <a href="" >BOOSEException</a> during compilation.
+ Verifies that declaring a boolean variable with
+ a literal value of true correctly stores the value
+ as true (1) in the program.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -94,7 +98,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MoveTo_NonIntegerX_ThrowsBOOSEException()</pre></td></tr></tbody></table>
+    public void Compile_boolean_declaration_with_literal_true_sets_value_to_1()</pre></td></tr></tbody></table>
     
     
     
@@ -108,12 +112,13 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MoveTo_NonIntegerY_ThrowsBOOSEException</div>
+    <div id="PageTitle">Method Compile_evaluates_operators_and_numeric_fallback</div>
     <div id="Contents" />
 
     
- Commands MoveTo with a non-integer Y coordinate
- and expects a <a href="" >BOOSEException</a> during compilation.
+ Verifies that boolean expressions using logical operators
+ and numeric fallback values are correctly evaluated
+ during compilation.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -128,41 +133,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MoveTo_NonIntegerY_ThrowsBOOSEException()</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method MoveTo_InvalidParameterCount_ThrowsBOOSEException</div>
-    <div id="Contents" />
-
-    
- Commands MoveTo with an incorrect number of parameters
- and expects a <a href="" >BOOSEException</a> from parameter checking.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void MoveTo_InvalidParameterCount_ThrowsBOOSEException()</pre></td></tr></tbody></table>
+    public void Compile_evaluates_operators_and_numeric_fallback()</pre></td></tr></tbody></table>
     
     
     

@@ -1,294 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Quincy Dahal - BOOSE INTERPRETER DOCUMENTATION</title>
-    <style>
-        :root {
-            --green-main: #28a745;
-            --green-dark: #218838;
-            --blue-main: #0d6efd;
-            --page-bg: #f3f4f6;
-            --card-bg: #ffffff;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-        }
-
-        /* ---- Base layout ---- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #e8f5e9 0, var(--page-bg) 55%);
-            color: var(--text-main);
-            padding: 32px 16px 40px;
-        }
-
-        .page {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* ---- Header / hero ---- */
-        .hero {
-            border-radius: 10px 10px 0 0;
-            background: linear-gradient(90deg, var(--green-main), var(--green-dark));
-            color: #ffffff;
-            text-align: center;
-            padding: 16px 12px;
-            font-weight: 700;
-            font-size: 2.1rem;
-            letter-spacing: 0.02em;
-        }
-
-        .subtitle-main {
-            border-radius: 0 0 10px 10px;
-            background: var(--green-dark);
-            color: #ffffff;
-            text-align: center;
-            padding: 14px 12px;   /* a bit bigger */
-            font-size: 1.1rem;
-            margin-bottom: 24px;
-        }
-
-        p.intro {
-            margin-bottom: 24px;
-            text-align: center;
-            color: #4b5563;
-            font-size: 0.95rem;
-        }
-
-        /* ---- Section headings (highlighted) ---- */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 28px;
-            margin-bottom: 14px;
-        }
-
-        .section-title h2 {
-            background: var(--blue-main);
-            color: #ffffff;
-            padding: 6px 16px;
-            border-radius: 999px;
-            font-size: 1rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .section-title span.line {
-            flex: 1;
-            height: 1px;
-            background: #d1d5db;
-        }
-
-        /* ---- Card grid ---- */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 18px;
-            list-style: none;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 16px 18px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
-            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card a {
-            text-decoration: none;
-            color: #0056b3;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 3px;
-        }
-
-        .card span.subtitle {
-            display: block;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            line-height: 1.35;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--blue-main);
-            box-shadow: 0 14px 28px rgba(0, 123, 255, 0.18);
-        }
-
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Quincy-BOOSE Web Documentation</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <div class="page">
-        <div class="hero">
-            Quincy Dahal – BOOSE Interpreter Documentation
-        </div>
-        <div class="subtitle-main">
-            ID: 77466805 · L6 ASE Assignment
-        </div>
 
-        <p class="intro">
-            This page links to the auto-generated documentation for the core classes,
-            commands and unit tests of the BOOSE Canvas App project.
-        </p>
+    <header class="hero">
+        <h1>Quincy-BOOSE Web Documentation</h1>
+        <h2>Level-6(77466805)</h2>
+    </header>
 
-        <!-- Core application classes -->
-        <div class="section-title">
-            <h2>Core Application Classes</h2>
-            <span class="line"></span>
-        </div>
-        <ul class="card-grid">
-            <li class="card">
-                <a href="AppCanvas.html">AppCanvas</a>
-                <span class="subtitle">
-                    Handles drawing operations, canvas bitmap, shapes, and pen movement.
-                </span>
-            </li>
-            <li class="card">
-                <a href="Form1.html">Form1</a>
-                <span class="subtitle">
-                    Main Windows Form containing UI controls and output panel.
-                </span>
-            </li>
+    <main class="container">
+
+    <!-- ================= CORE APPLICATION ================= -->
+    <section>
+        <h3>Core Application Classes</h3>
+        <ul class="card-list">
+            <li><a href="AppCanvas.html">AppCanvas</a></li>
+            <li><a href="MainForm.html">MainForm</a></li>
+            <li><a href="ExtendedStoredProgram.html">ExtendedStoredProgram</a></li>
+            <li><a href="CommandFactory.html">CommandFactory</a></li>
+        </ul>
+    </section>
+
+    <!-- ================= COMMAND CLASSES ================= -->
+    <section>
+        <h3>Command Classes</h3>
+
+        <h4>🎨 Drawing Commands</h4>
+        <ul class="card-list">
+            <li><a href="CircleCommand.html">CircleCommand</a></li>
+            <li><a href="DrawToCommand.html">DrawToCommand</a></li>
+            <li><a href="MoveToCommand.html">MoveToCommand</a></li>
+            <li><a href="RectangleCommand.html">RectangleCommand</a></li>
+            <li><a href="TriangleCommand.html">TriangleCommand</a></li>
+            <li><a href="PenCommand.html">PenCommand</a></li>
+            <li><a href="WriteTextCommand.html">WriteTextCommand</a></li>
+            <li><a href="ClearCommand.html">ClearCommand</a></li>
+            <li><a href="ResetCommand.html">ResetCommand</a></li>
         </ul>
 
-        <!-- Command classes -->
-        <div class="section-title">
-            <h2>Command Classes</h2>
-            <span class="line"></span>
-        </div>
-        <ul class="card-grid">
-            <li class="card">
-                <a href="CircleCommand.html">CircleCommand</a>
-                <span class="subtitle">
-                    Implements drawing of circles with optional fill behavior.
-                </span>
-            </li>
-            <li class="card">
-                <a href="ClearCommand.html">ClearCommand</a>
-                <span class="subtitle">
-                    Clears Canvas.
-                </span>
-            </li>
-            <li class="card">
-                <a href="CommandFactory.html">CommandFactory</a>
-                <span class="subtitle">
-                    Factory responsible for creating command objects.
-                </span>
-            </li>
-            <li class="card">
-                <a href="DrawToCommand.html">DrawToCommand</a>
-                <span class="subtitle">
-                    Moves the pen to new coordinates while drawing a line.
-                </span>
-            </li>
-            <li class="card">
-                <a href="MoveToCommand.html">MoveToCommand</a>
-                <span class="subtitle">
-                    Moves the pen to a specified position without drawing.
-                </span>
-            </li>
-            <li class="card">
-                <a href="PenCommand.html">PenCommand</a>
-                <span class="subtitle">
-                    Changes pen color.
-                </span>
-            </li>
-            <li class="card">
-                <a href="RectCommand.html">RectCommand</a>
-                <span class="subtitle">
-                    Draws rectangles at the current pen location with width and height.
-                </span>
-            </li>
-            <li class="card">
-                <a href="ResetCommand.html">ResetCommand</a>
-                <span class="subtitle">
-                    Resets the pen and its position to (0, 0).
-                </span>
-            </li>
-            <li class="card">
-                <a href="TriCommand.html">TriCommand</a>
-                <span class="subtitle">
-                    Draws triangles at the current pen location using width and height.
-                </span>
-            </li>
-            <li class="card">
-                <a href="WriteTextCommand.html">WriteTextCommand</a>
-                <span class="subtitle">
-                    Renders text at the pen position.
-                </span>
-            </li>
+        <h4>🔢 Variable & Data Commands</h4>
+        <ul class="card-list">
+            <li><a href="Int.html">Int</a></li>
+            <li><a href="Real.html">Real</a></li>
+            <li><a href="Boolean.html">Boolean</a></li>
+            <li><a href="Array.html">Array</a></li>
+            <li><a href="SetCommand.html">SetCommand</a></li>
+            <li><a href="Peek.html">Peek</a></li>
+            <li><a href="Poke.html">Poke</a></li>
         </ul>
 
-        <!-- Unit test classes -->
-        <div class="section-title">
-            <h2>Unit Test Classes</h2>
-            <span class="line"></span>
-        </div>
-        <ul class="card-grid">
-            <li class="card">
-                <a href="CircleUnitTest.html">CircleUnitTest</a>
-                <span class="subtitle">
-                    Tests radius validation and circle creation accuracy.
-                </span>
-            </li>
-            <li class="card">
-                <a href="DrawToUnitTest.html">DrawToUnitTest</a>
-                <span class="subtitle">
-                    Ensures correct pen position updates and line rendering.
-                </span>
-            </li>
-            <li class="card">
-                <a href="MoveToUnitTest.html">MoveToUnitTest</a>
-                <span class="subtitle">
-                    Verifies pen relocation without drawing artefacts.
-                </span>
-            </li>
-            <li class="card">
-                <a href="PenUnitTest.html">PenUnitTest</a>
-                <span class="subtitle">
-                    Checks pen color mode changes for correctness.
-                </span>
-            </li>
-            <li class="card">
-                <a href="RectUnitTest.html">RectUnitTest</a>
-                <span class="subtitle">
-                    Confirms correct height/width handling and rectangle drawing.
-                </span>
-            </li>
-            <li class="card">
-                <a href="TriUnitTest.html">TriUnitTest</a>
-                <span class="subtitle">
-                    Confirms correct height/width handling and triangle drawing.
-                </span>
-            </li>
-            <li class="card">
-                <a href="WriteTextUnitTest.html">WriteTextUnitTest</a>
-                <span class="subtitle">
-                    Tests for text rendering.
-                </span>
-            </li>
+        <h4>🔁 Control Flow & Program Structure</h4>
+        <ul class="card-list">
+            <li><a href="IfCommand.html">IfCommand</a></li>
+            <li><a href="ElseCommand.html">ElseCommand</a></li>
+            <li><a href="EndIfCommand.html">EndIfCommand</a></li>
+            <li><a href="ForCommand.html">ForCommand</a></li>
+            <li><a href="EndForCommand.html">EndForCommand</a></li>
+            <li><a href="WhileCommand.html">WhileCommand</a></li>
+            <li><a href="EndWhileCommand.html">EndWhileCommand</a></li>
+            <li><a href="MethodCommand.html">MethodCommand</a></li>
+            <li><a href="EndMethodCommand.html">EndMethodCommand</a></li>
+            <li><a href="CallCommand.html">CallCommand</a></li>
+        </ul>
+    </section>
+
+    <!-- ================= UNIT TESTS ================= -->
+    <section>
+        <h3>Unit Test Classes</h3>
+
+        <h4>🧪 Drawing Command Tests</h4>
+        <ul class="card-list">
+            <li><a href="CircleUnitTest.html">CircleUnitTest</a></li>
+            <li><a href="DrawToUnitTest.html">DrawToUnitTest</a></li>
+            <li><a href="MoveToUnitTest.html">MoveToUnitTest</a></li>
+            <li><a href="RectangleUnitTest.html">RectangleUnitTest</a></li>
+            <li><a href="TriangleUnitTest.html">TriangleUnitTest</a></li>
+            <li><a href="PenUnitTest.html">PenUnitTest</a></li>
+            <li><a href="WriteTextUnitTest.html">WriteTextUnitTest</a></li>
+            <li><a href="ClearUnitTest.html">ClearUnitTest</a></li>
+            <li><a href="ResetUnitTest.html">ResetUnitTest</a></li>
         </ul>
 
-        <div class="footer">
-            Documentation web site produced for BOOSE Canvas App.
-        </div>
-    </div>
+        <h4>🧪 Variable & Data Tests</h4>
+        <ul class="card-list">
+            <li><a href="IntUnitTest.html">IntUnitTest</a></li>
+            <li><a href="RealUnitTest.html">RealUnitTest</a></li>
+            <li><a href="BooleanUnitTest.html">BooleanUnitTest</a></li>
+            <li><a href="ArrayUnitTest.html">ArrayUnitTest</a></li>
+        </ul>
+
+        <h4>🧪 Control Flow Tests</h4>
+        <ul class="card-list">
+            <li><a href="IfUnitTest.html">IfUnitTest</a></li>
+            <li><a href="ForUnitTest.html">ForUnitTest</a></li>
+            <li><a href="WhileUnitTest.html">WhileUnitTest</a></li>
+            <li><a href="MethodUnitTest.html">MethodUnitTest</a></li>
+        </ul>
+    </section>
+
+</main>
+
+
+    <footer>
+        <p>© Quincy-BOOSE Web Documentation</p>
+    </footer>
+
 </body>
 </html>

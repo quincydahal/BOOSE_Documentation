@@ -7,11 +7,11 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class RectUnitTest</div>
+    <div id="PageTitle">Class IfCommand</div>
     <div id="Contents" />
 
     
- Rect command unit tests.
+ Implements the BOOSE <span class="Code">if</span> command.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -26,7 +26,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class RectUnitTest</pre></td></tr></tbody></table>
+    public class IfCommand : Command, ICommand</pre></td></tr></tbody></table>
     
     
     
@@ -40,12 +40,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Rect_ValidWidthHeight_ExecutesSuccessfully</div>
+    <div id="PageTitle">Field condition</div>
     <div id="Contents" />
 
     
- Commands Rect with valid width and height and
- checks that it executes successfully as an outline rectangle.
+ Raw condition string supplied to the if command.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -60,7 +59,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void Rect_ValidWidthHeight_ExecutesSuccessfully()</pre></td></tr></tbody></table>
+    private string condition = &quot;&quot;</pre></td></tr></tbody></table>
     
     
     
@@ -74,12 +73,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Rect_FilledTrue_ExecutesSuccessfully</div>
+    <div id="PageTitle">Constructor IfCommand</div>
     <div id="Contents" />
 
     
- Commands Rect with valid width and height and the filled flag
- set to true, and checks that it executes successfully.
+ Initializes a new instance of the <a href="" >IfCommand</a> class.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -94,7 +92,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void Rect_FilledTrue_ExecutesSuccessfully()</pre></td></tr></tbody></table>
+    public IfCommand()</pre></td></tr></tbody></table>
     
     
     
@@ -108,12 +106,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Rect_FilledFalse_ExecutesSuccessfully</div>
+    <div id="PageTitle">Method Set</div>
     <div id="Contents" />
 
     
- Commands Rect with valid width and height and the filled flag
- set to false, and checks that it executes successfully.
+ Parses the if command and stores the condition expression.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -128,7 +125,109 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void Rect_FilledFalse_ExecutesSuccessfully()</pre></td></tr></tbody></table>
+    public override void Set(StoredProgram program, string param)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>program</div><div class='ParameterCommentContainer'>
+The active <a href="" >StoredProgram</a>.
+</div>
+<div class='CommentParameterName'>param</div><div class='ParameterCommentContainer'>
+Condition expression to evaluate.
+</div>
+
+    
+    
+    
+    
+<div id='SectionHeader1' class='SectionHeader'>
+   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
+   <span class='SectionHeader'>
+       <span class='ArrowCursor'>
+       Exceptions
+       </span>
+   </span>
+</div>
+<div id='SectionContainerDiv1' class='SectionContainer'>
+<table class='MembersTable'>
+<col width='25%' />
+<col width='75%' />
+<tr>
+<th>Exception</th>
+<th>Condition</th></tr>
+<tr>
+<td><span class='PseudoLink'>CommandException</span></td>
+<td>
+ Thrown when the condition is missing or empty.
+ </td>
+</tr>
+</table
+</div>
+</div>
+
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method CheckParameters</div>
+    <div id="Contents" />
+
+    
+ Parameter checking is handled during parsing.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
+Unused.
+</div>
+
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method Compile</div>
+    <div id="Contents" />
+
+    
+ Compile-time processing is not required for the if command.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void Compile()</pre></td></tr></tbody></table>
     
     
     
@@ -142,12 +241,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Rect_NonIntegerWidth_ThrowsBOOSEException</div>
+    <div id="PageTitle">Method Execute</div>
     <div id="Contents" />
 
     
- Commands Rect with a non-integer width and expects a
- <a href="" >BOOSEException</a> during compilation.
+ Evaluates the condition and updates program flow
+ based on the result.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -162,7 +261,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void Rect_NonIntegerWidth_ThrowsBOOSEException()</pre></td></tr></tbody></table>
+    public override void Execute()</pre></td></tr></tbody></table>
     
     
     
@@ -176,12 +275,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method Rect_InvalidFilledFlag_ThrowsBOOSEException</div>
+    <div id="PageTitle">Method EvaluateCondition</div>
     <div id="Contents" />
 
     
- Commands Rect with an invalid filled flag and expects a
- <a href="" >BOOSEException</a> during compilation.
+ Evaluates the condition expression as a boolean.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -196,10 +294,18 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public void Rect_InvalidFilledFlag_ThrowsBOOSEException()</pre></td></tr></tbody></table>
+    private bool EvaluateCondition(string cond)</pre></td></tr></tbody></table>
     
-    
-    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>cond</div><div class='ParameterCommentContainer'>
+Condition expression.
+</div>
+
+    <div class='CommentHeader'>Return Value</div>
+<div class='ParameterCommentContainer'>
+True if condition is met; otherwise false.
+</div>
+
     
     
     

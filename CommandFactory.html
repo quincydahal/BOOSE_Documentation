@@ -11,7 +11,11 @@
     <div id="Contents" />
 
     
- Application-specific command factory for BOOSE.
+ Application-specific command factory for the BOOSE language.
+
+ This factory is responsible for mapping BOOSE command keywords
+ (e.g. <span class="Code">moveto</span>, <span class="Code">circle</span>, <span class="Code">if</span>, <span class="Code">for</span>, <span class="Code">call</span>)
+ to their corresponding <a href="" >ICommand</a> implementations.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -34,6 +38,26 @@
     
     
     
+<div id='SectionHeader1' class='SectionHeader'>
+   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
+   <span class='SectionHeader'>
+       <span class='ArrowCursor'>
+       Remarks
+       </span>
+   </span>
+</div>
+<div id='SectionContainerDiv1' class='SectionContainer'>
+
+ Drawing-related commands are constructed with a shared
+ <a href="" >ICanvas</a> instance, while control-flow and
+ variable commands are created without a canvas dependency.
+
+ Any command name not recognised here is delegated to the
+ base <a href="" >CommandFactory</a> implementation.
+ 
+</div>
+</div>
+
     
 
 </div>
@@ -44,7 +68,7 @@
     <div id="Contents" />
 
     
- The canvas instance that all created commands will use for drawing.
+ Canvas instance used by all drawing commands created by this factory.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -97,8 +121,8 @@
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
 
- The <a href="" >ICanvas</a> implementation that commands created by this
- factory will target.
+ The <a href="" >ICanvas</a> implementation that drawing commands
+ will operate on.
  
 </div>
 
@@ -142,7 +166,7 @@
     <div id="Contents" />
 
     
- Creates a command instance for the specified command name.
+ Creates a BOOSE command instance for the specified command name.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -157,53 +181,27 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override BOOSE.ICommand MakeCommand(string name)</pre></td></tr></tbody></table>
+    public override ICommand MakeCommand(string name)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
 <div class='CommentParameterName'>name</div><div class='ParameterCommentContainer'>
 
- The command name as written in the BOOSE script.
+ The command keyword as written in the BOOSE script.
  
 </div>
 
     <div class='CommentHeader'>Return Value</div>
 <div class='ParameterCommentContainer'>
 
- A concrete implementation of <a href="" >ICommand</a> corresponding to
- the given name, or a command created by the base factory if the name
- is not handled here.
+ A concrete implementation of <a href="" >ICommand</a> that matches
+ the given command name, or a command created by the base factory
+ if the name is not handled here.
  
 </div>
 
     
     
     
-<div id='SectionHeader1' class='SectionHeader'>
-   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
-   <span class='SectionHeader'>
-       <span class='ArrowCursor'>
-       Exceptions
-       </span>
-   </span>
-</div>
-<div id='SectionContainerDiv1' class='SectionContainer'>
-<table class='MembersTable'>
-<col width='25%' />
-<col width='75%' />
-<tr>
-<th>Exception</th>
-<th>Condition</th></tr>
-<tr>
-<td><span class='PseudoLink'>NotImplementedException</span></td>
-<td>
- Thrown when the <span class="Code">pen</span> command is requested but the corresponding
- <span class="Code">PenCommand</span> has not yet been implemented.
- </td>
-</tr>
-</table
-</div>
-</div>
-
     
     
 

@@ -7,16 +7,15 @@
 </head>
 <body><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Class CircleCommand</div>
+    <div id="PageTitle">Class IntCommand</div>
     <div id="Contents" />
 
     
- Implements the <span class="Code">circle</span> drawing command for the BOOSE language.
+ Implements the BOOSE <span class="Code">int</span> command.
 
- This command draws a circle on the canvas using a radius that may be
- a literal value, variable, or expression evaluated at runtime.
- An optional second parameter controls whether the circle is filled
- or outlined.
+ This command supports declaration and assignment of integer variables.
+ Integer values may be defined using literal values, variables, or
+ arithmetic expressions evaluated at runtime.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -31,7 +30,55 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public class CircleCommand : CommandTwoParameters, ICommand</pre></td></tr></tbody></table>
+    public class IntCommand : Evaluation, ICommand</pre></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+<div id='SectionHeader1' class='SectionHeader'>
+   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
+   <span class='SectionHeader'>
+       <span class='ArrowCursor'>
+       Remarks
+       </span>
+   </span>
+</div>
+<div id='SectionContainerDiv1' class='SectionContainer'>
+
+ Supported examples:
+ <ul><li><span class="Code">int radius = 50</span></li><li><span class="Code">int width</span></li><li><span class="Code">width = 2 * radius</span></li></ul>
+</div>
+</div>
+
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Field intValue</div>
+    <div id="Contents" />
+
+    
+ Internal storage of the integer variable value.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    private int intValue</pre></td></tr></tbody></table>
     
     
     
@@ -45,11 +92,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field Canvas</div>
+    <div id="PageTitle">Field bool</div>
     <div id="Contents" />
 
     
- Canvas on which the circle will be drawn.
+ Indicates whether this instance represents a variable declaration
+ rather than a reassignment.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -64,7 +112,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private ICanvas Canvas</pre></td></tr></tbody></table>
+    private readonly bool isDeclaration</pre></td></tr></tbody></table>
     
     
     
@@ -78,11 +126,12 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field program</div>
+    <div id="PageTitle">Constructor IntCommand</div>
     <div id="Contents" />
 
     
- Reference to the current stored program, used for expression evaluation.
+ Initializes a new instance of the <a href="" >IntCommand</a> class
+ configured as a declaration.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -97,7 +146,7 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private StoredProgram program</pre></td></tr></tbody></table>
+    public IntCommand() : this(true)</pre></td></tr></tbody></table>
     
     
     
@@ -111,11 +160,11 @@
 
 </p><hr></hr><p><div id="Header">
     <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method parameters</div>
+    <div id="PageTitle">Constructor IntCommand</div>
     <div id="Contents" />
 
     
- Parsed parameters supplied to the command.
+ Initializes a new instance of the <a href="" >IntCommand</a> class.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -130,79 +179,48 @@
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private string[] parameters = System.Array.Empty&lt;string&gt;()</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Field filled</div>
-    <div id="Contents" />
-
-    
- Indicates whether the circle should be filled.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    private bool filled = false</pre></td></tr></tbody></table>
-    
-    
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Constructor CircleCommand</div>
-    <div id="Contents" />
-
-    
- Initializes a new instance of the <a href="" >CircleCommand</a> class.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public CircleCommand(ICanvas canvas)</pre></td></tr></tbody></table>
+    public IntCommand(bool isDeclaration) =&gt; this.isDeclaration = isDeclaration</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>canvas</div><div class='ParameterCommentContainer'>
-Canvas used for drawing operations.
+<div class='CommentParameterName'>isDeclaration</div><div class='ParameterCommentContainer'>
+<span class="Code">true</span> if the command declares a new variable;
+ <span class="Code">false</span> if it performs assignment only.
+ 
 </div>
 
+    
+    
+    
+    
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Property Value</div>
+    <div id="Contents" />
+
+    
+ Gets or sets the current integer value of the variable.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override int Value</pre></td></tr></tbody></table>
+    
+    
     
     
     
@@ -218,7 +236,8 @@ Canvas used for drawing operations.
     <div id="Contents" />
 
     
- Sets the stored program context and parses the parameter string.
+ Parses the integer command, extracting the variable name and
+ associated expression.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -233,53 +252,16 @@ Canvas used for drawing operations.
     <table class='CodeTable'>
     <colgroup><col width='100%'></colgroup>
     <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void Set(StoredProgram Program, string Params)</pre></td></tr></tbody></table>
+    public override void Set(StoredProgram program, string param)</pre></td></tr></tbody></table>
     
     <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>Program</div><div class='ParameterCommentContainer'>
+<div class='CommentParameterName'>program</div><div class='ParameterCommentContainer'>
 The active <a href="" >StoredProgram</a>.
 </div>
-<div class='CommentParameterName'>Params</div><div class='ParameterCommentContainer'>
+<div class='CommentParameterName'>param</div><div class='ParameterCommentContainer'>
 
- Parameter string containing the radius expression and optional filled flag.
+ Parameter string containing the variable name and optional expression.
  
-</div>
-
-    
-    
-    
-    
-    
-    
-
-</div>
-
-</p><hr></hr><p><div id="Header">
-    <div id="ProjectTitle">Documentation Preview</div>
-    <div id="PageTitle">Method CheckParameters</div>
-    <div id="Contents" />
-
-    
- Validates the number of parameters supplied to the command.
- 
-        <div id='SectionHeader0' class='SectionHeader'>
-        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
-        <span class='SectionHeader'>
-            <span class='ArrowCursor' >
-            Syntax
-            </span>
-        </span>
-    </div>
-
-    <div id='SectionContainerDiv0' class='SectionContainer'>
-    <table class='CodeTable'>
-    <colgroup><col width='100%'></colgroup>
-    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
-    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
-    
-    <div class='CommentHeader'>Parameters</div>
-<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
-Array of parsed parameters.
 </div>
 
     
@@ -302,9 +284,10 @@ Array of parsed parameters.
 <th>Exception</th>
 <th>Condition</th></tr>
 <tr>
-<td><span class='PseudoLink'>CommandException</span></td>
+<td><span class='PseudoLink'>BOOSEException</span></td>
 <td>
- Thrown when an invalid number of parameters is supplied.
+ Thrown when the program reference is <span class="Code">null</span> or the parameter
+ string is invalid.
  </td>
 </tr>
 </table
@@ -322,10 +305,10 @@ Array of parsed parameters.
     <div id="Contents" />
 
     
- Performs compile-time validation of parameters.
+ Performs compile-time processing for integer declarations.
 
- Radius and filled values may be expressions, so evaluation
- is deferred until execution.
+ New variables are registered during compilation, while
+ evaluation of expressions is deferred until execution.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -347,6 +330,37 @@ Array of parsed parameters.
     
     
     
+<div id='SectionHeader1' class='SectionHeader'>
+   <img id='SectionExpanderImg1' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' /> 
+   <span class='SectionHeader'>
+       <span class='ArrowCursor'>
+       Exceptions
+       </span>
+   </span>
+</div>
+<div id='SectionContainerDiv1' class='SectionContainer'>
+<table class='MembersTable'>
+<col width='25%' />
+<col width='75%' />
+<tr>
+<th>Exception</th>
+<th>Condition</th></tr>
+<tr>
+<td><span class='PseudoLink'>BOOSEException</span></td>
+<td>
+ Thrown when the program context is missing.
+ </td>
+</tr>
+<tr>
+<td><span class='PseudoLink'>CommandException</span></td>
+<td>
+ Thrown when the evaluated expression cannot be converted to an integer.
+ </td>
+</tr>
+</table
+</div>
+</div>
+
     
     
 
@@ -358,8 +372,8 @@ Array of parsed parameters.
     <div id="Contents" />
 
     
- Executes the circle command by evaluating parameters and
- drawing the circle on the canvas.
+ Executes the integer command by evaluating the expression
+ and updating the stored variable value.
  
         <div id='SectionHeader0' class='SectionHeader'>
         <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
@@ -399,13 +413,50 @@ Array of parsed parameters.
 <tr>
 <td><span class='PseudoLink'>CommandException</span></td>
 <td>
- Thrown when parameter evaluation fails or values are invalid.
+ Thrown when the evaluated expression cannot be converted to an integer.
  </td>
 </tr>
 </table
 </div>
 </div>
 
+    
+    
+
+</div>
+
+</p><hr></hr><p><div id="Header">
+    <div id="ProjectTitle">Documentation Preview</div>
+    <div id="PageTitle">Method CheckParameters</div>
+    <div id="Contents" />
+
+    
+ Parameter checking is handled during parsing and evaluation.
+ 
+        <div id='SectionHeader0' class='SectionHeader'>
+        <img id='SectionExpanderImg0' src='css/BigSquareExpanded.gif' alt='Collapse/Expand' >
+        <span class='SectionHeader'>
+            <span class='ArrowCursor' >
+            Syntax
+            </span>
+        </span>
+    </div>
+
+    <div id='SectionContainerDiv0' class='SectionContainer'>
+    <table class='CodeTable'>
+    <colgroup><col width='100%'></colgroup>
+    <tbody><tr class='CodeTable'><th class='CodeTable'>C#</th></tr><tr class='CodeTable'><td class='CodeTable'><pre style='margin-left: 2px;'>
+    public override void CheckParameters(string[] parameterList)</pre></td></tr></tbody></table>
+    
+    <div class='CommentHeader'>Parameters</div>
+<div class='CommentParameterName'>parameterList</div><div class='ParameterCommentContainer'>
+Unused.
+</div>
+
+    
+    
+    
+    
     
     
 
